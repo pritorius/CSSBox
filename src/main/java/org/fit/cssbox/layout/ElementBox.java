@@ -1187,6 +1187,12 @@ abstract public class ElementBox extends Box
         g.setColor(Color.ORANGE);
         g.drawRect(getAbsoluteContentX(), getAbsoluteContentY(), getContentWidth(), getContentHeight());
         
+        Composite originalComposite = g.getComposite();
+        AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f);
+        g.setComposite(alphaComposite);
+        
+        g.fillRect(absbounds.x, absbounds.y, bounds.width, bounds.height);
+        g.setComposite(originalComposite);
         //draw the real content box
         /*g.setColor(Color.GREEN);
         Rectangle r = getMinimalBounds();
